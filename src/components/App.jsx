@@ -53,26 +53,20 @@ class App extends Component {
     );
   };
   componentDidMount() {
-    console.log('сработал DidMount');
     const contacts = localStorage.getItem('contacts');
     const parseContacts = JSON.parse(contacts);
-
-    console.log(parseContacts);
     if (parseContacts) {
       this.setState({ contacts: parseContacts });
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log('сработал DidUpdate');
     if (this.state.contacts !== prevState.contacts) {
-      console.log('обновили contacts');
       localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
 
   render() {
-    console.log('render App');
     const { filter } = this.state;
     const filteredContacts = this.getFilteredContacts();
 
